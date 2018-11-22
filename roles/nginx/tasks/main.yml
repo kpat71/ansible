@@ -8,10 +8,8 @@
     name:    
       - nginx
 
-
-
 - name: example copying file with owner and permissions
-  copy:
+  template:
     src: roles/nginx/files/nginx.conf
     dest: /etc/nginx/nginx.conf
     owner: foo
