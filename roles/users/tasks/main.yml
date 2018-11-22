@@ -4,12 +4,7 @@
     state: "present" 
     name: "{{ item.name }}"
   with_items: "{{ users }}"    
-
-  tasks:
-    - name: add several users
-      user: name={{ item.name }} state=present password={{ item.passwd }}
-      with_items: "{{ users }}"
-
+  
 - name: Set authorized key, removing all the authorized keys already set
   authorized_key:
     user: '{{ item.name }}'
