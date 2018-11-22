@@ -8,7 +8,17 @@
     - httpd
     - mod_ssl
   tags: httpd
-  
+
+- name: write the apache config file
+  template:
+    src: roles/apache_servers/templates/httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf  
+    owner: root 
+    group: root 
+    mode: 0644
+  notify:
+    - restart nginx
+
 - name: start Nginx
   service: 
     name: httpd 
