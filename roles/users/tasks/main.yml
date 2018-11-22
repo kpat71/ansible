@@ -1,6 +1,5 @@
 ---
 - name: Add SSH users
-  state: present
   user: 
     state: "present" 
     name: "{{ item.name }}"

@@ -5,4 +5,8 @@
   hosts: webserver
   roles:
     - role: update
+      tags: [ 'update' ]    
+    - role: users
+      tags: [ 'users' ]
+    - role: nginx 
       tags: [ 'webserver' ]
