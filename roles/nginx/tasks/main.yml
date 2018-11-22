@@ -1,8 +1,7 @@
 ---
 # install Nginx server
-
 - name: Enable amazon-linux-extras packages
-  shell: "amazon-linux-extras enable {{item.name}}"
+  shell: "amazon-linux-extras enable nginx1.12"
 
 - name: Install Nginx
   yum:
