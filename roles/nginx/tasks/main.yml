@@ -8,10 +8,20 @@
     name:    
       - nginx
 
-- name: write the apache config file
+
+
+- name: example copying file with owner and permissions
+  copy:
+    src: roles/nginx/files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: foo
+    group: foo
+    mode: 0644
+
+- name: write the Nginx config file
   template:
-    src: roles/nginx/templates/httpd.conf.j2
-    dest: /etc/httpd/conf/httpd.conf
+    src: roles/nginx/templates/index.html
+    dest: /usr/share/nginx/html/index.html
     owner: root
     group: root
     mode: 0644
