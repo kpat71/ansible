@@ -1,0 +1,4 @@
+# We manage AWS using Cloudformations and therefore we connect to AWS using the aws-cli locally
+[webserver]
+localhost   ansible_connection=local
+

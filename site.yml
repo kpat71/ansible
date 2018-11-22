@@ -1,0 +1,8 @@
+---
+# file: site.yml
+
+- name: Create AWS infrastructure
+  hosts: webserver
+  roles:
+    - role: update
+      tags: [ 'webserver' ]

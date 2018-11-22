@@ -1,0 +1,28 @@
+---
+- name: Add SSH users
+  state: present
+  user: 
+    state: "present" 
+    name: "{{ item.name }}"
+  with_items: "{{ users }}"    
+
+  tasks:
+    - name: add several users
+      user: name={{ item.name }} state=present password={{ item.passwd }}
+      with_items: "{{ users }}"
+
+- name: Set authorized key, removing all the authorized keys already set
+  authorized_key:
+    user: '{{ item.name }}'
+    key: '{{ item.sshkey }}'
+    state: present
+  with_items: "{{ users }}"
+
+- name: Add remote user to sudoers
+  lineinfile:
+    state: present
+    create: yes
+    dest: /etc/sudoers.d/{{ item.name }}
+    regexp: '^{{ item.name }} ALL'
+    line: '{{ item.name }} ALL=(ALL) NOPASSWD: ALL'
+  with_items: "{{ users }}"  
