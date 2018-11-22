@@ -12,8 +12,8 @@
   template:
     src: roles/nginx/files/nginx.conf
     dest: /etc/nginx/nginx.conf
-    owner: foo
-    group: foo
+    owner: root
+    group: root
     mode: 0644
 
 - name: write the Nginx config file
