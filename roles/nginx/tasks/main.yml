@@ -1,0 +1,17 @@
+---
+# install Nginx server 
+- name: install nginx
+  yum:
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - httpd
+    - mod_ssl
+  tags: httpd
+  
+- name: start Nginx
+  service: 
+    name: httpd 
+    state: started 
+    enabled: yes
+
