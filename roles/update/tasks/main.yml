@@ -9,7 +9,7 @@
 
 # do "apt-get update"
 - name: apt-get update
-    apt:
+  apt:
     update-cache: yes
     changed_when: 0  
   when: ansible_pkg_mgr == "apt"    
