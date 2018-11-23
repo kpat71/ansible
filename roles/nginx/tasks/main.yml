@@ -2,13 +2,21 @@
 # install Nginx server
 - name: Enable amazon-linux-extras packages
   shell: "amazon-linux-extras enable nginx1.12"
+  when: ansible_distribution == 'Amazon'
 
-- name: Install Nginx
+- name: Install Nginx yum
   yum:
     name:    
       - nginx
+    when: ansible_pkg_mgr == "yum"
 
-- name: example copying file with owner and permissions
+- name: Install Nginx yum
+  apt:
+    name:    
+      - nginx
+    when: ansible_pkg_mgr == "apt"
+
+- name: Example copying file with owner and permissions
   template:
     src: roles/nginx/files/nginx.conf
     dest: /etc/nginx/nginx.conf
@@ -16,7 +24,7 @@
     group: root
     mode: 0644
 
-- name: write the Nginx config file
+- name: Write the Nginx config file
   template:
     src: roles/nginx/templates/index.html.j2
     dest: /usr/share/nginx/html/index.html
@@ -26,7 +34,7 @@
   notify:
     - restart nginx
 
-- name: start Nginx
+- name: Start Nginx
   service:
     name: nginx
     state: started

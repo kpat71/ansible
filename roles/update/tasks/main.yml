@@ -1,6 +1,21 @@
 ---
+# update packager yum based systems
 - name: Update all packages
   yum: 
     update_cache: yes
     name: "*"
     state: latest
+  when: ansible_pkg_mgr == "yum"  
+
+# do "apt-get update"
+- name: apt-get update
+    apt:
+    update-cache: yes
+    changed_when: 0  
+  when: ansible_pkg_mgr == "apt"    
+
+# do "apt-get dist-upgrade"
+- name: apt-get dist-upgrade
+  apt:
+    upgrade: dist 
+  when: ansible_pkg_mgr == "apt"     
