@@ -14,8 +14,8 @@
     changed_when: 0  
   when: ansible_pkg_mgr == "apt"    
 
-# do "apt-get dist-upgrade"
-- name: apt-get dist-upgrade
+- name: Upgrade all packages to the latest version
   apt:
-    upgrade: dist 
-  when: ansible_pkg_mgr == "apt"     
+    name: "*"
+    state: latest
+  when: ansible_pkg_mgr == "apt"  
