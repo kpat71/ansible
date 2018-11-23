@@ -32,7 +32,7 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_pkg_mgr == "test"
+  when: ansible_pkg_mgr == "apt"
 
 - name: Write the Nginx config file
   template:

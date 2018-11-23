@@ -3,6 +3,7 @@
   user: 
     state: "present" 
     name: "{{ item.name }}"
+    shell: /bin/bash
   with_items: "{{ users }}"    
   
 - name: Set authorized key, removing all the authorized keys already set
