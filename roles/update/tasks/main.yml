@@ -10,6 +10,7 @@
   # Update apt packages to latest version  
 - name: Upgrade all packages to the latest version
   apt:
+    force_apt_get: yes
     update_cache: yes
     name: "*"
     state: latest

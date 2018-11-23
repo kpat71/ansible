@@ -8,13 +8,13 @@
   yum:
     name:    
       - nginx
-    when: ansible_pkg_mgr == "yum"
+  when: ansible_pkg_mgr == "yum"
 
 - name: Install Nginx yum
   apt:
     name:    
       - nginx
-    when: ansible_pkg_mgr == "apt"
+  when: ansible_pkg_mgr == "apt"
 
 - name: Example copying file with owner and permissions
   template:
