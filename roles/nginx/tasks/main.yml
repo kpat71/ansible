@@ -10,7 +10,7 @@
       - nginx
   when: ansible_pkg_mgr == "yum"
 
-- name: Install Nginx yum
+- name: Install Nginx apt
   apt:
     name:    
       - nginx
@@ -27,7 +27,7 @@
 
 - name: Example copying file with owner and permissions
   template:
-    src: roles/nginx/files/nginx.conf
+    src: roles/nginx/files/default
     dest: /etc/nginx/sites-available/default
     owner: root
     group: root
