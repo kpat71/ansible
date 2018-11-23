@@ -7,15 +7,10 @@
     state: latest
   when: ansible_pkg_mgr == "yum"  
 
-# do "apt-get update"
-- name: apt-get update
-  apt:
-    update-cache: yes
-    changed_when: 0  
-  when: ansible_pkg_mgr == "apt"    
-
+  # Update apt packages to latest version  
 - name: Upgrade all packages to the latest version
   apt:
+    update_cache: yes
     name: "*"
     state: latest
   when: ansible_pkg_mgr == "apt"  
