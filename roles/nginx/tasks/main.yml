@@ -23,6 +23,8 @@
     owner: root
     group: root
     mode: 0644
+  notify:
+    - restart nginx     
   when: ansible_pkg_mgr == "yum"
 
 - name: Example copying file with owner and permissions
@@ -32,6 +34,8 @@
     owner: root
     group: root
     mode: 0644
+  notify:
+    - restart nginx    
   when: ansible_pkg_mgr == "apt"
 
 - name: Write the Nginx config file
@@ -41,8 +45,6 @@
     owner: root
     group: root
     mode: 0644
-  notify:
-    - restart nginx
 
 - name: Start Nginx
   service:
