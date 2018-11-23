@@ -10,7 +10,7 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html
 
 ### User data part to run ansible
 # Update
-if [ -f '/etc/redhat-release' ]; then yum update -y; fi
+if [ -f '/etc/yum.conf' ]; then yum update -y; fi
 if [ -f '/etc/debian_version' ]; then export DEBIAN_FRONTEND=noninteractive; fi 
 if [ -f '/etc/debian_version' ]; then apt-get update && apt-get upgrade -y; fi
 if [ -f '/etc/debian_version' ]; then apt-get install python -y; fi 
@@ -23,7 +23,7 @@ if [ -f '/etc/debian_version' ]; then pip install 'cryptography==2.4.2'; fi
 pip install 'ansible==2.7.2'
 # Install GIT client
 if [ -f '/etc/debian_version' ]; then apt-get install -y git; fi
-if [ -f '/etc/redhat-release' ]; then yum install -y git; fi
+if [ -f '/etc/yum.conf' ]; then yum install -y git; fi
 # Add github key to known hosts
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 # Remove existing ansible installation 
@@ -41,3 +41,4 @@ ansible-playbook -i inventories/test/hosts site.yml
 
 # Get facts from instance locally 
 ansible -m setup localhost
+
