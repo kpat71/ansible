@@ -1,5 +1,9 @@
 # Ansible for dummies
 
+# Git repos
+git clone https://github.com/kpat71/simple_aws.git
+git clone https://github.com/kpat71/ansible.git
+
 # Best practise document
 https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html
 
